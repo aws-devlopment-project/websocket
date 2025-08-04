@@ -4,5 +4,8 @@ plugins {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation platform('software.amazon.awssdk:bom:2.20.45')
+    implementation 'software.amazon.awssdk:dynamodb-enhanced'
     implementation project(':chat-core')
 }

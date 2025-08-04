@@ -1,2 +1,29 @@
 server:
-  port: 9001
+  port: 8081
+
+#spring:
+#  profiles:
+#    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: dev
+
+amazon:
+  dynamodb:
+    endpoint: http://${DYNAMO_DB_HOST:localhost}:8000
+  aws:
+    accesskey: ${AWS_ACCESS_KEY:test}
+    secretkey: ${AWS_SECRET_KEY:test}
+    region: ap-northeast-2
+
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: prod
+#
+#aws:
+#  region: ap-northeast-2
