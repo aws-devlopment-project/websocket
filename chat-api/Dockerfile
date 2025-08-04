@@ -2,10 +2,11 @@
 FROM gradle:8.4-jdk17-alpine AS build
 WORKDIR /app
 COPY . .
-RUN gradle clean build --no-daemon
+RUN gradle clean bootJar --no-daemon
 
+# 런타임용 OpenJDK 이미지
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
-COPY build/libs/*-SNAPSHOT.jar app.jar
+COPY --from=build /app/build/libs/*SNAPSHOT.jar app.jar
 EXPOSE 9000
 ENTRYPOINT ["java", "-jar", "app.jar"]
