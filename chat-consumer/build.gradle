@@ -4,7 +4,6 @@ plugins {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web' // For REST endpoints if needed, or remove if not
-    implementation 'org.springframework.kafka:spring-kafka'
     implementation 'org.springframework.boot:spring-boot-starter-json'
 //    implementation 'com.amazonaws:aws-java-sdk-dynamodb'
     implementation project(':chat-core')
