@@ -17,9 +17,8 @@ import java.util.List;
 public class ChatHistoryController {
 	private final ChatMessageService chatMessageService;
 
-	@GetMapping("/history/{chatRoomId}")
-	public ResponseEntity<List<ChatMessage>> getChatHistory(@PathVariable Long chatRoomId) {
-		List<ChatMessage> chatHistory = chatMessageService.getChatHistory(chatRoomId);
-		return ResponseEntity.ok(chatHistory);
+	@GetMapping("/history/{clubId}")
+	public ResponseEntity<Object> getChatHistory(@PathVariable("clubId") Long clubId) {
+		return ResponseEntity.ok(chatMessageService.findById(clubId));
 	}
 }

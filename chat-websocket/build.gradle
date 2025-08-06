@@ -5,7 +5,11 @@ plugins {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation platform('software.amazon.awssdk:bom:2.20.45')
-    implementation 'software.amazon.awssdk:dynamodb-enhanced'
+    // AWS SDK
+    implementation 'software.amazon.awssdk:dynamodb'
+    // DynamoDB 매핑 라이브러리 (spring-data-dynamodb는 제외)
+    implementation 'software.amazon.awssdk:dynamodb:2.25.8'
+    // JSON 파싱용
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
     implementation project(':chat-core')
 }

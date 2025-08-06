@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 9001
 
 #spring:
 #  profiles:
@@ -11,13 +11,15 @@ server:
 #    activate:
 #      on-profile: dev
 
-amazon:
+aws:
   dynamodb:
-    endpoint: http://${DYNAMO_DB_HOST:localhost}:8000
-  aws:
-    accesskey: ${AWS_ACCESS_KEY:test}
-    secretkey: ${AWS_SECRET_KEY:test}
     region: ap-northeast-2
+    access-key: ${AWS_ACCESS_KEY:your_aws_access_key}
+    secret-key: ${AWS_SECRET_KEY:your_aws_secret_key}
+
+# IAM 권한을 사용하는 경우 별도 accessKey/secretKey 없이도 IRSA나 EC2 역할로 동작합니다.
+#aws:
+#  region: ap-northeast-2
 
 #---
 #spring:

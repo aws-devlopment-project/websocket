@@ -14,15 +14,15 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class ChatMessage {
-	private String chatRoomId;
+	private String clubId;
 	private String messageId;
 	@Getter private Long senderId;
 	@Getter private String message;
 	@Getter private Instant createdAt;
 
 	@DynamoDbPartitionKey
-	public String getChatRoomId() {
-		return chatRoomId;
+	public String getClubId() {
+		return clubId;
 	}
 
 	@DynamoDbSortKey
@@ -30,10 +30,10 @@ public class ChatMessage {
 		return messageId;
 	}
 
-	public static ChatMessage of(Long chatRoomId, Long senderId, String message) {
+	public static ChatMessage of(Long clubId, Long senderId, String message) {
 		return ChatMessage.builder()
-				.chatRoomId("ROOM#" + chatRoomId)
-				.messageId(String.format("%s#%s", Instant.now().toString(), UUID.randomUUID().toString()))
+				.clubId("ROOM#" + clubId)
+				.messageId(String.format("%s#%s", Instant.now().toString(), UUID.randomUUID()))
 				.senderId(senderId)
 				.message(message)
 				.createdAt(Instant.now())
