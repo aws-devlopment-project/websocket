@@ -20,10 +20,14 @@ COPY . .
 # chat-api 모듈 빌드 (테스트는 제외하여 빌드 시간 단축)
 RUN ./gradlew :chat-api:build -x test
 
+# 헬스체크 (선택)
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s CMD wget --spider -q http://ALB:9000/actuator/health || exit 1
+
 # 3. 최종 실행 이미지 생성 스테이지
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
 # 빌드된 JAR 파일만 최종 이미지에 복사
 COPY --from=build /app/chat-api/build/libs/*-SNAPSHOT.jar app.jar
 EXPOSE 9000
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# ENTRYPOINT exec 포맷 적용
+ENTRYPOINT ["sh", "-c", "exec java -jar app.jar"]
