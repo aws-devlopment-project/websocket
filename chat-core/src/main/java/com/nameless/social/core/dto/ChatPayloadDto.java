@@ -11,9 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ChatMessageDto {
+public class ChatPayloadDto {
 	private Long clubId;
-	private Long senderId;
+	private String senderEmail;
 	private String senderUsername; // Display purposes
 	private String message;
 	private MessageType type; // JOIN, CHAT, LEAVE

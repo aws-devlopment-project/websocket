@@ -1,6 +1,6 @@
 package com.nameless.social.websocket.handler;
 
-import com.nameless.social.core.dto.ChatMessageDto;
+import com.nameless.social.core.dto.ChatPayloadDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -15,14 +15,14 @@ public class WebSocketChatHandler {
 	private final SimpMessagingTemplate messagingTemplate;
 
 	@MessageMapping("/chat.sendMessage")
-	public void sendMessage(@Payload ChatMessageDto chatMessage) {
-		log.info("Received message: {}", chatMessage);
-		messagingTemplate.convertAndSend("/topic/chatroom/" + chatMessage.getClubId(), chatMessage);
+	public void sendMessage(@Payload ChatPayloadDto chatPayloadDto) {
+		log.info("Received message: {} - {}", chatPayloadDto.getSenderEmail(), chatPayloadDto.getMessage());
+		messagingTemplate.convertAndSend("/topic/chatroom/" + chatPayloadDto.getClubId(), chatPayloadDto);
 	}
 
 	@MessageMapping("/chat.addUser")
-	public void addUser(@Payload ChatMessageDto chatMessage) {
-		log.info("User joined: {}", chatMessage);
-		messagingTemplate.convertAndSend("/topic/chatroom/" + chatMessage.getClubId(), chatMessage);
+	public void addUser(@Payload ChatPayloadDto chatPayloadDto) {
+		log.info("User joined: {}", chatPayloadDto.getSenderEmail());
+		messagingTemplate.convertAndSend("/topic/chatroom/" + chatPayloadDto.getClubId(), chatPayloadDto);
 	}
 }
