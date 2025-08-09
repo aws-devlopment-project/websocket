@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @Builder
 public class GroupInfoModel {
+	private long id; // group id
 	private String name;
 	private String description;
 	private String icon;
@@ -24,6 +25,7 @@ public class GroupInfoModel {
 
 	public static GroupInfoModel of(Group group, List<String> tags) {
 		return GroupInfoModel.builder()
+				.id(group.getId())
 				.name(group.getName())
 				.description(group.getDescription())
 				.icon(group.getIcon())
