@@ -1,2 +1,6 @@
 server:
   port: 9001
+
+aws:
+  dynamodb:
+    region: ap-northeast-2

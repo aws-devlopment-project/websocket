@@ -6,7 +6,7 @@ AWS_ACCOUNT_ID="YOUR_ACCOUNT_ID"
 ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 
 # 모듈 목록
-MODULES=("chat-api" "chat-consumer" "chat-websocket")
+MODULES=("chat-api" "chat-websocket")
 
 # ECR 로그인
 aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}
