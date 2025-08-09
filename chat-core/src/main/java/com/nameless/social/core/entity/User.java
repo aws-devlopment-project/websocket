@@ -33,6 +33,7 @@ public class User extends BaseTimeEntity {
 	@OneToMany(mappedBy = "user")
 	private List<UserGroup> userGroups = new ArrayList<>();
 
+	// TODO test를 위해서만 사용 중. 실제 서비스에 사용하려면 사용 가능한지 확인 필요
 	@ConstructorProperties({"token", "name", "email"})
 	public User(String token, String name, String email) {
 		this.token = token;

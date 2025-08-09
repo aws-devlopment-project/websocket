@@ -9,9 +9,10 @@ import java.util.List;
 @Setter
 @Builder
 public class ClubGroupInfoModel {
+	private long clubId;
 	private String name;
 	private String description;
 	private String icon;
-	private long memberNum; // TODO 중복데이터 -> 제거해도 되는지 확인 필요
+	private long memberNum;
 	private List<String> tag;
 }

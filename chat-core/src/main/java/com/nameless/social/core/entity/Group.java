@@ -30,7 +30,9 @@ public class Group extends BaseTimeEntity { // Category
 	@OneToMany(mappedBy = "group")
 	private List<Club> clubs = new ArrayList<>();
 
-	public Group(String name) {
+	public Group(long id, String name, String tags) {
+		this.id = id;
 		this.name = name;
+		this.tag = tags;
 	}
 }

@@ -31,7 +31,8 @@ public class Club extends BaseTimeEntity {
 //	@OneToMany(mappedBy = "club")
 //	private List<ChatMessage> messages = new ArrayList<>();
 
-	public Club(String name) {
+	public Club(long id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 }

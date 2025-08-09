@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @Builder
 public class JoinListModel {
+	private long groupId;
 	private String groupname;
-	private List<String> clubList; // club name list
+	private List<ClubModel> clubList;
 }

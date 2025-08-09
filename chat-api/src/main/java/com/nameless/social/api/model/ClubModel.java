@@ -12,9 +12,8 @@ import java.util.List;
 @Setter
 @Builder
 public class ClubModel {
-	private long id;
+	private long clubId;
 	private String name;
-	private List<UserModel> participants;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 
